@@ -71,8 +71,13 @@ run_test () {
 
   message "running program $quine"
   output=$("$quine")
-  test "$?" != 0 && return 2
-  echo "$output"
+  status="$?"
+
+  if test "$status" != 0; then
+    test -n "$output" && echo "$output"
+    message "program exited with status $status"
+    return 2
+  fi
 
   message "comparing $quine output against its source code"
   dwdiff --color="$red","$green" "$quine" <(echo "$output")
