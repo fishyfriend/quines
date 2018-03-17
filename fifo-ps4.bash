@@ -1,11 +1,11 @@
 set +x
-rm -f /tmp/p
-mkfifo /tmp/p
-trap "rm -f /tmp/p" EXIT
-tac</tmp/p&
-echo set +x>/tmp/p
-exec 2>/tmp/p
+p=$(mktemp -u)
+mkfifo "$p"
+trap "rm -f \"$p\"" EXIT
+tac 0< "$p" &
+echo set +x 1> "$p"
+exec 2> "$p"
 PS4=
   set -x
-PS4=' set -x\nPS4=\nexec 2>/tmp/p\necho set +x>/tmp/p\ntac</tmp/p&\ntrap "rm -f /tmp/p" EXIT\nmkfifo /tmp/p\nrm -f /tmp/p\n'
+PS4=' set -x\nPS4=\nexec 2> "\$p"\necho set +x 1> "\$p"\ntac 0< "\$p" &\ntrap "rm -f \\\"\$p\\\"" EXIT\nmkfifo "\$p"\np=\$(mktemp -u)\n'
 set +x
