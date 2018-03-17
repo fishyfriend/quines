@@ -1,3 +1,4 @@
+#!/bin/bash
 add_lines () {
   IFS=''
   while read line; do
@@ -11,6 +12,7 @@ add_lines () {
 }
 
 add_lines <<"EOS"
+#!/bin/bash
 add_lines () {
   IFS=''
   while read line; do
