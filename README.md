@@ -2,18 +2,17 @@
 
 Here are some [quines][1] and related tools.
 
-`test-quine` can check whether a program is a quine or not:
+`quine` can check whether a script (interpreted program) is a quine:
 
-```
-$ ./test-quine ./quote-subst.bash
-test-quine: running program ./quote-subst.bash
-q=\' f='echo "q=\\$q f=$q$f$q; eval \$f"'; eval $f
-test-quine: comparing ./quote-subst.bash output against its source code
-q=\' f='echo "q=\\$q f=$q$f$q; eval \$f"'; eval $f
-test-quine: success: output matched source code
-```
-
-[`dwdiff`][2] is required to use `test-quine`.
+    $ ./quine heredoc.bash
+    yes, it's a quine
+    $ ./quine helloword.py
+    1,3c1
+    < #!/usr/bin/env python
+    <
+    < print("Hello World!")
+    ---
+    > Hello World!
+    nope, not a quine
 
 [1]: https://en.wikipedia.org/wiki/Quine_(computing)
-[2]: https://os.ghalkes.nl/dwdiff.html

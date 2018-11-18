@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Usage: quine <program>
+# Exit status: 0 if the program's source code matches its output, otherwise 1.
+
+prog=$1
+
+out=$(mktemp)
+trap "rm \"$out\"" EXIT
+
+"$(realpath "$prog")" >"$out"
+
+if diff "$prog" "$out"; then
+  echo "yes, it's a quine" >/dev/stderr
+  exit
+else
+  echo "nope, not a quine" >/dev/stderr
+  exit 1
+fi
