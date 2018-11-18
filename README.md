@@ -15,4 +15,8 @@ Here are some [quines][1] and related tools.
     > Hello World!
     nope, not a quine
 
+# Requirements
+
+The programs have been tested on NixOS 18.09 running GNU Coreutils and Diffutils, and should work on most Unix desktop environments with few or no changes.
+
 [1]: https://en.wikipedia.org/wiki/Quine_(computing)
