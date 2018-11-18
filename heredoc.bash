@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 add_lines () {
   IFS=''
   while read line; do
@@ -12,7 +12,7 @@ add_lines () {
 }
 
 add_lines <<"EOS"
-#!/bin/bash
+#!/usr/bin/env bash
 add_lines () {
   IFS=''
   while read line; do
