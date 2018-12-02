@@ -1,6 +1,6 @@
 # quines
 
-Here are some [quines][1] and related tools.
+Here are some [quines][1] and related tools. For now, all in Bash!
 
 `quine` can check whether a script (interpreted program) is a quine:
 
